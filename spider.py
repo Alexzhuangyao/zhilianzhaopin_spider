@@ -1,4 +1,4 @@
-+import urllib
+import urllib
 from urllib.parse import *
 from bs4 import BeautifulSoup
 import string
@@ -72,7 +72,7 @@ def get_content1(url, headers):
 #    print(html.read().decode('utf-8'))
     contents = html.read().decode('utf-8')
     html.close()#关闭网页
-    time.sleep(3)#设置三秒间隔，以防封IP
+    time.sleep(1.5)#设置三秒间隔，以防封IP
     return (contents)
 
 
@@ -232,7 +232,7 @@ def get_recuite_info(job, city, page):
     '''
     df = get_links_all_info(job, city, page)
 #    df = remove_useless_info(df) #数据预处理，清洗。
-    df.to_csv(('shanghai{}.csv').format(str(page)))
+    df.to_csv(('{}{}{}.csv').format(str(job),str(city),str(page)))
 
 
 
@@ -240,7 +240,7 @@ def get_recuite_info(job, city, page):
 *********************获取招聘信息*************************** 
 '''
 
-get_recuite_info('人工智能','上海',15 )
+#get_recuite_info('人工智能','惠州',5 )
 #    for page in range(1,9):
 #        print('第{}页下载完毕。'.format(str(page)))
 #        time.sleep(5)
